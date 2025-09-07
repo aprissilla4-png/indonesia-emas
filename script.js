@@ -1,23 +1,27 @@
-// SCRIPT MENU MOBILE (HAMBURGER)
+document.addEventListener('DOMContentLoaded', () => {
+  // SCRIPT MENU MOBILE (HAMBURGER)
   const menuToggle = document.querySelector(".menu-toggle");
   const navUl = document.querySelector("nav ul");
-  menuToggle.addEventListener("click", () => {
-    navUl.classList.toggle("active");
-  });
-  // Tutup menu saat link di-klik
-  document.querySelectorAll('nav ul li a').forEach(link => {
-    link.addEventListener('click', () => {
-      navUl.classList.remove('active');
+  if (menuToggle && navUl) {
+    menuToggle.addEventListener("click", () => {
+      navUl.classList.toggle("active");
     });
-  });
+    // Tutup menu saat link di-klik
+    document.querySelectorAll('nav ul li a').forEach(link => {
+      link.addEventListener('click', () => {
+        navUl.classList.remove('active');
+      });
+    });
+  }
+
   // SCRIPT MODAL GALERI
-  document.addEventListener('DOMContentLoaded', () => {
-    const modal = document.getElementById('gallery-modal');
-    const modalImg = document.getElementById('modal-image');
-    const modalTitle = document.getElementById('modal-title');
-    const modalDesc = document.getElementById('modal-description');
-    const serviceCards = document.querySelectorAll('.service-card');
-    const closeBtn = document.querySelector('.close-button');
+  const modal = document.getElementById('gallery-modal');
+  const modalImg = document.getElementById('modal-image');
+  const modalTitle = document.getElementById('modal-title');
+  const modalDesc = document.getElementById('modal-description');
+  const serviceCards = document.querySelectorAll('.service-card');
+  const closeBtn = document.querySelector('.close-button');
+  if (modal && modalImg && modalTitle && modalDesc && closeBtn) {
     serviceCards.forEach(card => {
       card.addEventListener('click', () => {
         const img = card.dataset.img;
@@ -26,7 +30,6 @@
         modalImg.src = img;
         modalTitle.textContent = title;
         modalDesc.textContent = description;
-        
         modal.style.display = 'flex';
       });
     });
@@ -39,4 +42,5 @@
         closeModal();
       }
     });
-  });
+  }
+});
